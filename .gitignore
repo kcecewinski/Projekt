@@ -1,6 +1,6 @@
 # Prerequisites
 *.d
-*.user
+*.DotSettings.user
 
 # Object files
 *.o
