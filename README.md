@@ -1,4 +1,3 @@
-# Projekt
 # Concurrent programming
 
 ## Working Group
