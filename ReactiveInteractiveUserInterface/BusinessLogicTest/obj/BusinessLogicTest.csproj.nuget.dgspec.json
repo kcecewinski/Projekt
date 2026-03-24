@@ -1,20 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\atame\\RiderProjects\\Projekt\\ReactiveInteractiveUserInterface\\BusinessLogicTest\\BusinessLogicTest.csproj": {}
+    "D:\\Studia\\sem4\\wspolbiegi\\Projekt\\ReactiveInteractiveUserInterface\\BusinessLogicTest\\BusinessLogicTest.csproj": {}
   },
   "projects": {
-    "C:\\Users\\atame\\RiderProjects\\Projekt\\ReactiveInteractiveUserInterface\\BusinessLogicTest\\BusinessLogicTest.csproj": {
+    "D:\\Studia\\sem4\\wspolbiegi\\Projekt\\ReactiveInteractiveUserInterface\\BusinessLogicTest\\BusinessLogicTest.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\atame\\RiderProjects\\Projekt\\ReactiveInteractiveUserInterface\\BusinessLogicTest\\BusinessLogicTest.csproj",
+        "projectUniqueName": "D:\\Studia\\sem4\\wspolbiegi\\Projekt\\ReactiveInteractiveUserInterface\\BusinessLogicTest\\BusinessLogicTest.csproj",
         "projectName": "BusinessLogicTest",
-        "projectPath": "C:\\Users\\atame\\RiderProjects\\Projekt\\ReactiveInteractiveUserInterface\\BusinessLogicTest\\BusinessLogicTest.csproj",
-        "packagesPath": "C:\\Users\\atame\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\atame\\RiderProjects\\Projekt\\ReactiveInteractiveUserInterface\\BusinessLogicTest\\obj\\",
+        "projectPath": "D:\\Studia\\sem4\\wspolbiegi\\Projekt\\ReactiveInteractiveUserInterface\\BusinessLogicTest\\BusinessLogicTest.csproj",
+        "packagesPath": "C:\\Users\\cecek\\.nuget\\packages\\",
+        "outputPath": "D:\\Studia\\sem4\\wspolbiegi\\Projekt\\ReactiveInteractiveUserInterface\\BusinessLogicTest\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\atame\\AppData\\Roaming\\NuGet\\NuGet.Config"
+          "C:\\Users\\cecek\\AppData\\Roaming\\NuGet\\NuGet.Config"
         ],
         "originalTargetFrameworks": [
           "net9.0"
@@ -26,8 +26,8 @@
           "net9.0": {
             "targetAlias": "net9.0",
             "projectReferences": {
-              "C:\\Users\\atame\\RiderProjects\\Projekt\\ReactiveInteractiveUserInterface\\BusinessLogic\\BusinessLogic.csproj": {
-                "projectPath": "C:\\Users\\atame\\RiderProjects\\Projekt\\ReactiveInteractiveUserInterface\\BusinessLogic\\BusinessLogic.csproj"
+              "D:\\Studia\\sem4\\wspolbiegi\\Projekt\\ReactiveInteractiveUserInterface\\BusinessLogic\\BusinessLogic.csproj": {
+                "projectPath": "D:\\Studia\\sem4\\wspolbiegi\\Projekt\\ReactiveInteractiveUserInterface\\BusinessLogic\\BusinessLogic.csproj"
               }
             }
           }
@@ -42,7 +42,7 @@
           "auditLevel": "low",
           "auditMode": "direct"
         },
-        "SdkAnalysisLevel": "10.0.100"
+        "SdkAnalysisLevel": "10.0.200"
       },
       "frameworks": {
         "net9.0": {
@@ -85,15 +85,15 @@
           "downloadDependencies": [
             {
               "name": "Microsoft.AspNetCore.App.Ref",
-              "version": "[9.0.13, 9.0.13]"
+              "version": "[9.0.14, 9.0.14]"
             },
             {
               "name": "Microsoft.NETCore.App.Ref",
-              "version": "[9.0.13, 9.0.13]"
+              "version": "[9.0.14, 9.0.14]"
             },
             {
               "name": "Microsoft.WindowsDesktop.App.Ref",
-              "version": "[9.0.13, 9.0.13]"
+              "version": "[9.0.14, 9.0.14]"
             }
           ],
           "frameworkReferences": {
@@ -101,21 +101,21 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\10.0.103/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\10.0.201/PortableRuntimeIdentifierGraph.json"
         }
       }
     },
-    "C:\\Users\\atame\\RiderProjects\\Projekt\\ReactiveInteractiveUserInterface\\BusinessLogic\\BusinessLogic.csproj": {
+    "D:\\Studia\\sem4\\wspolbiegi\\Projekt\\ReactiveInteractiveUserInterface\\BusinessLogic\\BusinessLogic.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\atame\\RiderProjects\\Projekt\\ReactiveInteractiveUserInterface\\BusinessLogic\\BusinessLogic.csproj",
+        "projectUniqueName": "D:\\Studia\\sem4\\wspolbiegi\\Projekt\\ReactiveInteractiveUserInterface\\BusinessLogic\\BusinessLogic.csproj",
         "projectName": "TP.ConcurrentProgramming.BusinessLogic",
-        "projectPath": "C:\\Users\\atame\\RiderProjects\\Projekt\\ReactiveInteractiveUserInterface\\BusinessLogic\\BusinessLogic.csproj",
-        "packagesPath": "C:\\Users\\atame\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\atame\\RiderProjects\\Projekt\\ReactiveInteractiveUserInterface\\BusinessLogic\\obj\\",
+        "projectPath": "D:\\Studia\\sem4\\wspolbiegi\\Projekt\\ReactiveInteractiveUserInterface\\BusinessLogic\\BusinessLogic.csproj",
+        "packagesPath": "C:\\Users\\cecek\\.nuget\\packages\\",
+        "outputPath": "D:\\Studia\\sem4\\wspolbiegi\\Projekt\\ReactiveInteractiveUserInterface\\BusinessLogic\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\atame\\AppData\\Roaming\\NuGet\\NuGet.Config"
+          "C:\\Users\\cecek\\AppData\\Roaming\\NuGet\\NuGet.Config"
         ],
         "originalTargetFrameworks": [
           "net8.0"
@@ -127,8 +127,8 @@
           "net8.0": {
             "targetAlias": "net8.0",
             "projectReferences": {
-              "C:\\Users\\atame\\RiderProjects\\Projekt\\ReactiveInteractiveUserInterface\\Data\\Data.csproj": {
-                "projectPath": "C:\\Users\\atame\\RiderProjects\\Projekt\\ReactiveInteractiveUserInterface\\Data\\Data.csproj"
+              "D:\\Studia\\sem4\\wspolbiegi\\Projekt\\ReactiveInteractiveUserInterface\\Data\\Data.csproj": {
+                "projectPath": "D:\\Studia\\sem4\\wspolbiegi\\Projekt\\ReactiveInteractiveUserInterface\\Data\\Data.csproj"
               }
             }
           }
@@ -143,7 +143,7 @@
           "auditLevel": "low",
           "auditMode": "direct"
         },
-        "SdkAnalysisLevel": "10.0.100"
+        "SdkAnalysisLevel": "10.0.200"
       },
       "frameworks": {
         "net8.0": {
@@ -168,15 +168,15 @@
           "downloadDependencies": [
             {
               "name": "Microsoft.AspNetCore.App.Ref",
-              "version": "[8.0.24, 8.0.24]"
+              "version": "[8.0.25, 8.0.25]"
             },
             {
               "name": "Microsoft.NETCore.App.Ref",
-              "version": "[8.0.24, 8.0.24]"
+              "version": "[8.0.25, 8.0.25]"
             },
             {
               "name": "Microsoft.WindowsDesktop.App.Ref",
-              "version": "[8.0.24, 8.0.24]"
+              "version": "[8.0.25, 8.0.25]"
             }
           ],
           "frameworkReferences": {
@@ -184,21 +184,21 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\10.0.103/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\10.0.201/PortableRuntimeIdentifierGraph.json"
         }
       }
     },
-    "C:\\Users\\atame\\RiderProjects\\Projekt\\ReactiveInteractiveUserInterface\\Data\\Data.csproj": {
+    "D:\\Studia\\sem4\\wspolbiegi\\Projekt\\ReactiveInteractiveUserInterface\\Data\\Data.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\atame\\RiderProjects\\Projekt\\ReactiveInteractiveUserInterface\\Data\\Data.csproj",
+        "projectUniqueName": "D:\\Studia\\sem4\\wspolbiegi\\Projekt\\ReactiveInteractiveUserInterface\\Data\\Data.csproj",
         "projectName": "DataLayer",
-        "projectPath": "C:\\Users\\atame\\RiderProjects\\Projekt\\ReactiveInteractiveUserInterface\\Data\\Data.csproj",
-        "packagesPath": "C:\\Users\\atame\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\atame\\RiderProjects\\Projekt\\ReactiveInteractiveUserInterface\\Data\\obj\\",
+        "projectPath": "D:\\Studia\\sem4\\wspolbiegi\\Projekt\\ReactiveInteractiveUserInterface\\Data\\Data.csproj",
+        "packagesPath": "C:\\Users\\cecek\\.nuget\\packages\\",
+        "outputPath": "D:\\Studia\\sem4\\wspolbiegi\\Projekt\\ReactiveInteractiveUserInterface\\Data\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\atame\\AppData\\Roaming\\NuGet\\NuGet.Config"
+          "C:\\Users\\cecek\\AppData\\Roaming\\NuGet\\NuGet.Config"
         ],
         "originalTargetFrameworks": [
           "net8.0"
@@ -222,7 +222,7 @@
           "auditLevel": "low",
           "auditMode": "direct"
         },
-        "SdkAnalysisLevel": "10.0.100"
+        "SdkAnalysisLevel": "10.0.200"
       },
       "frameworks": {
         "net8.0": {
@@ -247,15 +247,15 @@
           "downloadDependencies": [
             {
               "name": "Microsoft.AspNetCore.App.Ref",
-              "version": "[8.0.24, 8.0.24]"
+              "version": "[8.0.25, 8.0.25]"
             },
             {
               "name": "Microsoft.NETCore.App.Ref",
-              "version": "[8.0.24, 8.0.24]"
+              "version": "[8.0.25, 8.0.25]"
             },
             {
               "name": "Microsoft.WindowsDesktop.App.Ref",
-              "version": "[8.0.24, 8.0.24]"
+              "version": "[8.0.25, 8.0.25]"
             }
           ],
           "frameworkReferences": {
@@ -263,7 +263,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\10.0.103/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\10.0.201/PortableRuntimeIdentifierGraph.json"
         }
       }
     }

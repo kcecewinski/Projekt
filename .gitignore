@@ -54,3 +54,16 @@ dkms.conf
 
 # debug information files
 *.dwo
+
+# JetBrains / Rider IDE
+.idea/
+*.idea/
+
+# Visual Studio / Rider user settings
+*.user
+*.suo
+*.userosscache
+*.sln.docstates
+
+# Rider
+.vs/

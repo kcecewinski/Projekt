@@ -1710,19 +1710,19 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\atame\\.nuget\\packages\\": {}
+    "C:\\Users\\cecek\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\atame\\RiderProjects\\Projekt\\ReactiveInteractiveUserInterface\\DataTest\\DataTest.csproj",
+      "projectUniqueName": "D:\\Studia\\sem4\\wspolbiegi\\Projekt\\ReactiveInteractiveUserInterface\\DataTest\\DataTest.csproj",
       "projectName": "DataTest",
-      "projectPath": "C:\\Users\\atame\\RiderProjects\\Projekt\\ReactiveInteractiveUserInterface\\DataTest\\DataTest.csproj",
-      "packagesPath": "C:\\Users\\atame\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\atame\\RiderProjects\\Projekt\\ReactiveInteractiveUserInterface\\DataTest\\obj\\",
+      "projectPath": "D:\\Studia\\sem4\\wspolbiegi\\Projekt\\ReactiveInteractiveUserInterface\\DataTest\\DataTest.csproj",
+      "packagesPath": "C:\\Users\\cecek\\.nuget\\packages\\",
+      "outputPath": "D:\\Studia\\sem4\\wspolbiegi\\Projekt\\ReactiveInteractiveUserInterface\\DataTest\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "C:\\Users\\atame\\AppData\\Roaming\\NuGet\\NuGet.Config"
+        "C:\\Users\\cecek\\AppData\\Roaming\\NuGet\\NuGet.Config"
       ],
       "originalTargetFrameworks": [
         "net8.0"
@@ -1734,8 +1734,8 @@
         "net8.0": {
           "targetAlias": "net8.0",
           "projectReferences": {
-            "C:\\Users\\atame\\RiderProjects\\Projekt\\ReactiveInteractiveUserInterface\\Data\\Data.csproj": {
-              "projectPath": "C:\\Users\\atame\\RiderProjects\\Projekt\\ReactiveInteractiveUserInterface\\Data\\Data.csproj"
+            "D:\\Studia\\sem4\\wspolbiegi\\Projekt\\ReactiveInteractiveUserInterface\\Data\\Data.csproj": {
+              "projectPath": "D:\\Studia\\sem4\\wspolbiegi\\Projekt\\ReactiveInteractiveUserInterface\\Data\\Data.csproj"
             }
           }
         }
@@ -1750,7 +1750,7 @@
         "auditLevel": "low",
         "auditMode": "direct"
       },
-      "SdkAnalysisLevel": "10.0.100"
+      "SdkAnalysisLevel": "10.0.200"
     },
     "frameworks": {
       "net8.0": {
@@ -1793,15 +1793,15 @@
         "downloadDependencies": [
           {
             "name": "Microsoft.AspNetCore.App.Ref",
-            "version": "[8.0.24, 8.0.24]"
+            "version": "[8.0.25, 8.0.25]"
           },
           {
             "name": "Microsoft.NETCore.App.Ref",
-            "version": "[8.0.24, 8.0.24]"
+            "version": "[8.0.25, 8.0.25]"
           },
           {
             "name": "Microsoft.WindowsDesktop.App.Ref",
-            "version": "[8.0.24, 8.0.24]"
+            "version": "[8.0.25, 8.0.25]"
           }
         ],
         "frameworkReferences": {
@@ -1809,7 +1809,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\10.0.103/PortableRuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\10.0.201/PortableRuntimeIdentifierGraph.json"
       }
     }
   }
