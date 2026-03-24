@@ -67,3 +67,7 @@ dkms.conf
 
 # Rider
 .vs/
+
+# .NET build output
+**/bin/
+**/obj/
