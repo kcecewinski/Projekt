@@ -26,18 +26,51 @@ namespace TP.ConcurrentProgramming.Presentation.ViewModel
     {
       ModelLayer = modelLayerAPI == null ? ModelAbstractApi.CreateModel() : modelLayerAPI;
       Observer = ModelLayer.Subscribe<ModelIBall>(x => Balls.Add(x));
+      StartCommand = new RelayCommand(
+        () => Start(NumberOfBalls),
+        () => !Started
+      );
+      StopCommand = new RelayCommand(
+        () => Stop(),
+        () => Started
+      );
     }
 
     #endregion ctor
 
     #region public API
 
+    private int _numberOfBalls = 5;
+    public int NumberOfBalls
+    {
+      get => _numberOfBalls;
+      set { _numberOfBalls = value; RaisePropertyChanged(); }
+    }
+
+    public RelayCommand StartCommand { get; }
     public void Start(int numberOfBalls)
     {
       if (Disposed)
         throw new ObjectDisposedException(nameof(MainWindowViewModel));
       ModelLayer.Start(numberOfBalls);
       Observer.Dispose();
+      Started = true;
+      StartCommand.RaiseCanExecuteChanged();
+      StopCommand.RaiseCanExecuteChanged();
+    }
+    
+    public RelayCommand StopCommand { get; }
+
+    private bool Started = false;
+    private void Stop()
+    {
+      Balls.Clear();
+      ModelLayer.Dispose();
+      ModelLayer = ModelAbstractApi.CreateModel();
+      Observer = ModelLayer.Subscribe<ModelIBall>(x => Balls.Add(x));
+      Started = false;
+      StartCommand.RaiseCanExecuteChanged();
+      StopCommand.RaiseCanExecuteChanged();
     }
 
     public ObservableCollection<ModelIBall> Balls { get; } = new ObservableCollection<ModelIBall>();
