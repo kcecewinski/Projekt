@@ -12,18 +12,30 @@ namespace TP.ConcurrentProgramming.BusinessLogic
 {
   internal class Ball : IBall
   {
+    #region ctor
+
     public Ball(Data.IBall ball)
     {
+      dataBall = ball;
       ball.NewPositionNotification += RaisePositionChangeEvent;
     }
+
+    #endregion ctor
 
     #region IBall
 
     public event EventHandler<IPosition>? NewPositionNotification;
 
+    /// <summary>
+    /// Current velocity of the ball in px/s — read from the underlying data layer
+    /// </summary>
+    public IPosition Velocity => new Position(dataBall.Velocity.x, dataBall.Velocity.y);
+
     #endregion IBall
 
     #region private
+
+    private readonly Data.IBall dataBall;
 
     private void RaisePositionChangeEvent(object? sender, Data.IVector e)
     {

@@ -14,16 +14,28 @@ namespace TP.ConcurrentProgramming.BusinessLogic
   {
     #region Layer Factory
 
+    /// <summary>
+    /// Returns the singleton instance. Two calls return the same object.
+    /// </summary>
     public static BusinessLogicAbstractAPI GetBusinessLogicLayer()
     {
       return modelInstance.Value;
+    }
+
+    /// <summary>
+    /// Creates a brand-new BusinessLogicImplementation instance.
+    /// Use this after Dispose() when you want to restart the simulation (e.g. Stop then Start).
+    /// </summary>
+    public static BusinessLogicAbstractAPI CreateNewBusinessLogicLayer()
+    {
+      return new BusinessLogicImplementation();
     }
 
     #endregion Layer Factory
 
     #region Layer API
 
-    public static readonly Dimensions GetDimensions = new(10.0, 10.0, 10.0);
+    public static readonly Dimensions GetDimensions = new(20.0, 420.0, 400.0);
 
     public abstract void Start(int numberOfBalls, Action<IPosition, IBall> upperLayerHandler);
 
@@ -41,15 +53,13 @@ namespace TP.ConcurrentProgramming.BusinessLogic
 
     #endregion private
   }
+
   /// <summary>
   /// Immutable type representing table dimensions
   /// </summary>
-  /// <param name="BallDimension"></param>
-  /// <param name="TableHeight"></param>
-  /// <param name="TableWidth"></param>
-  /// <remarks>
-  /// Must be abstract
-  /// </remarks>
+  /// <param name="BallDimension">Diameter of a ball in pixels</param>
+  /// <param name="TableHeight">Height of the table in pixels</param>
+  /// <param name="TableWidth">Width of the table in pixels</param>
   public record Dimensions(double BallDimension, double TableHeight, double TableWidth);
 
   public interface IPosition
@@ -58,8 +68,13 @@ namespace TP.ConcurrentProgramming.BusinessLogic
     double y { get; init; }
   }
 
-  public interface IBall 
+  public interface IBall
   {
     event EventHandler<IPosition> NewPositionNotification;
+
+    /// <summary>
+    /// Current velocity of the ball in px/s
+    /// </summary>
+    IPosition Velocity { get; }
   }
 }

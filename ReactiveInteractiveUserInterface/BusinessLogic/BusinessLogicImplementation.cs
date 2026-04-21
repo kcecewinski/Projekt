@@ -22,7 +22,7 @@ namespace TP.ConcurrentProgramming.BusinessLogic
 
     internal BusinessLogicImplementation(UnderneathLayerAPI? underneathLayer)
     {
-      layerBellow = underneathLayer == null ? UnderneathLayerAPI.GetDataLayer() : underneathLayer;
+      layerBellow = underneathLayer ?? UnderneathLayerAPI.CreateNewDataLayer();
     }
 
     #endregion ctor
@@ -51,7 +51,6 @@ namespace TP.ConcurrentProgramming.BusinessLogic
     #region private
 
     private bool Disposed = false;
-
     private readonly UnderneathLayerAPI layerBellow;
 
     #endregion private

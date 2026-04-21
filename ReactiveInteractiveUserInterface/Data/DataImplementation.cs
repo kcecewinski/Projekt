@@ -8,7 +8,6 @@
 //
 //_____________________________________________________________________________________________________________________________________
 
-using System;
 using System.Diagnostics;
 
 namespace TP.ConcurrentProgramming.Data
@@ -18,9 +17,7 @@ namespace TP.ConcurrentProgramming.Data
     #region ctor
 
     public DataImplementation()
-    {
-      MoveTimer = new Timer(Move, null, TimeSpan.Zero, TimeSpan.FromMilliseconds(100));
-    }
+    { }
 
     #endregion ctor
 
@@ -32,12 +29,23 @@ namespace TP.ConcurrentProgramming.Data
         throw new ObjectDisposedException(nameof(DataImplementation));
       if (upperLayerHandler == null)
         throw new ArgumentNullException(nameof(upperLayerHandler));
-      Random random = new Random();
+
       for (int i = 0; i < numberOfBalls; i++)
       {
-        Vector startingPosition = new(random.Next(100, 400 - 100), random.Next(100, 400 - 100));
-        Ball newBall = new(startingPosition, startingPosition);
-        upperLayerHandler(startingPosition, newBall);
+        double x = BallDiameter + RandomGenerator.NextDouble() * (TableWidth - 2 * BallDiameter);
+        double y = BallDiameter + RandomGenerator.NextDouble() * (TableHeight - 2 * BallDiameter);
+
+        double vx = (RandomGenerator.NextDouble() * 2 - 1) * 150 + 0.5;
+        double vy = (RandomGenerator.NextDouble() * 2 - 1) * 150 + 0.7;
+        if (Math.Abs(vx) < 20) vx = vx < 0 ? -(20.5 + RandomGenerator.NextDouble() * 5) : (20.5 + RandomGenerator.NextDouble() * 5);
+        if (Math.Abs(vy) < 20) vy = vy < 0 ? -(20.5 + RandomGenerator.NextDouble() * 5) : (20.5 + RandomGenerator.NextDouble() * 5);
+
+        Vector startPos = new Vector(x, y);
+        Vector startVel = new Vector(vx, vy);
+
+        Ball newBall = new Ball(startPos, startVel);
+        newBall.NewPositionNotification += (sender, pos) => Bounce((Ball)sender!, pos);
+        upperLayerHandler(startPos, newBall);
         BallsList.Add(newBall);
       }
     }
@@ -52,7 +60,8 @@ namespace TP.ConcurrentProgramming.Data
       {
         if (disposing)
         {
-          MoveTimer.Dispose();
+          foreach (Ball ball in BallsList)
+            ball.Stop();
           BallsList.Clear();
         }
         Disposed = true;
@@ -63,7 +72,6 @@ namespace TP.ConcurrentProgramming.Data
 
     public override void Dispose()
     {
-      // Do not change this code. Put cleanup code in 'Dispose(bool disposing)' method
       Dispose(disposing: true);
       GC.SuppressFinalize(this);
     }
@@ -72,17 +80,29 @@ namespace TP.ConcurrentProgramming.Data
 
     #region private
 
-    //private bool disposedValue;
     private bool Disposed = false;
+    private readonly Random RandomGenerator = new();
+    private readonly List<Ball> BallsList = [];
 
-    private readonly Timer MoveTimer;
-    private Random RandomGenerator = new();
-    private List<Ball> BallsList = [];
+    internal const double TableWidth = 400.0;
+    internal const double TableHeight = 420.0;
+    internal const double BallDiameter = 20.0;
 
-    private void Move(object? x)
+    private void Bounce(Ball ball, IVector pos)
     {
-      foreach (Ball item in BallsList)
-        item.Move(new Vector((RandomGenerator.NextDouble() - 0.5) * 10, (RandomGenerator.NextDouble() - 0.5) * 10));
+      double newVx = ball.Velocity.x;
+      double newVy = ball.Velocity.y;
+      double newX = pos.x;
+      double newY = pos.y;
+
+      if (pos.x < 0) { newX = 0; newVx = Math.Abs(newVx); }
+      else if (pos.x > TableWidth - BallDiameter) { newX = TableWidth - BallDiameter; newVx = -Math.Abs(newVx); }
+
+      if (pos.y < 0) { newY = 0; newVy = Math.Abs(newVy); }
+      else if (pos.y > TableHeight - BallDiameter) { newY = TableHeight - BallDiameter; newVy = -Math.Abs(newVy); }
+
+      if (newVx != ball.Velocity.x || newVy != ball.Velocity.y)
+        ball.Velocity = new Vector(newVx, newVy);
     }
 
     #endregion private
@@ -105,6 +125,15 @@ namespace TP.ConcurrentProgramming.Data
     internal void CheckObjectDisposed(Action<bool> returnInstanceDisposed)
     {
       returnInstanceDisposed(Disposed);
+    }
+
+    [Conditional("DEBUG")]
+    internal void CheckBallThreadIds(Action<IEnumerable<int>> returnThreadIds)
+    {
+      List<int> ids = new List<int>();
+      foreach (Ball ball in BallsList)
+        ball.GetThreadId(id => ids.Add(id));
+      returnThreadIds(ids);
     }
 
     #endregion TestingInfrastructure

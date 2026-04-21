@@ -156,11 +156,11 @@ namespace TP.ConcurrentProgramming.Presentation.ViewModel.Test
 
         #region IBall
 
-        public double Diameter => throw new NotImplementedException();
-
-        public double Top => throw new NotImplementedException();
-
-        public double Left => throw new NotImplementedException();
+        public double Diameter => 0.0;
+        public double Top => 0.0;
+        public double Left => 0.0;
+        public double VelocityX => 0.0;  // ← dodaj
+        public double VelocityY => 0.0;  // ← dodaj
 
         #region INotifyPropertyChanged
 

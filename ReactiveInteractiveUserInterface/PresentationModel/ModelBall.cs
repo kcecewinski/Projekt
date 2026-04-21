@@ -19,12 +19,17 @@ namespace TP.ConcurrentProgramming.Presentation.Model
 {
   internal class ModelBall : IBall
   {
+    #region ctor
+
     public ModelBall(double top, double left, LogicIBall underneathBall)
     {
       TopBackingField = top;
       LeftBackingField = left;
-      underneathBall.NewPositionNotification += NewPositionNotification;
+      logicBall = underneathBall;
+      underneathBall.NewPositionNotification += NewPositionNotificationHandler;
     }
+
+    #endregion ctor
 
     #region IBall
 
@@ -54,9 +59,33 @@ namespace TP.ConcurrentProgramming.Presentation.Model
 
     public double Diameter { get; init; } = 0;
 
+    public double VelocityX
+    {
+      get { return VelocityXBackingField; }
+      private set
+      {
+        if (VelocityXBackingField == value)
+          return;
+        VelocityXBackingField = value;
+        RaisePropertyChanged();
+      }
+    }
+
+    public double VelocityY
+    {
+      get { return VelocityYBackingField; }
+      private set
+      {
+        if (VelocityYBackingField == value)
+          return;
+        VelocityYBackingField = value;
+        RaisePropertyChanged();
+      }
+    }
+
     #region INotifyPropertyChanged
 
-    public event PropertyChangedEventHandler PropertyChanged;
+    public event PropertyChangedEventHandler? PropertyChanged;
 
     #endregion INotifyPropertyChanged
 
@@ -66,10 +95,20 @@ namespace TP.ConcurrentProgramming.Presentation.Model
 
     private double TopBackingField;
     private double LeftBackingField;
+    private double VelocityXBackingField;
+    private double VelocityYBackingField;
 
-    private void NewPositionNotification(object sender, IPosition e)
+    private readonly LogicIBall logicBall;
+    
+    private const double ScaleX = 1.0;
+    private const double ScaleY = 1.0;
+
+    private void NewPositionNotificationHandler(object? sender, IPosition e)
     {
-      Top = e.y; Left = e.x;
+      Top  = e.y * ScaleY;
+      Left = e.x * ScaleX;
+      VelocityX = logicBall.Velocity.x;
+      VelocityY = logicBall.Velocity.y;
     }
 
     private void RaisePropertyChanged([CallerMemberName] string propertyName = "")

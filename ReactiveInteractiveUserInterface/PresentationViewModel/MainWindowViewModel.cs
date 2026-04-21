@@ -9,6 +9,9 @@
 
 using System;
 using System.Collections.ObjectModel;
+using System.Collections.Specialized;
+using System.ComponentModel;
+using System.Linq;
 using TP.ConcurrentProgramming.Presentation.Model;
 using TP.ConcurrentProgramming.Presentation.ViewModel.MVVMLight;
 using ModelIBall = TP.ConcurrentProgramming.Presentation.Model.IBall;
@@ -22,10 +25,11 @@ namespace TP.ConcurrentProgramming.Presentation.ViewModel
     public MainWindowViewModel() : this(null)
     { }
 
-    internal MainWindowViewModel(ModelAbstractApi modelLayerAPI)
+    internal MainWindowViewModel(ModelAbstractApi? modelLayerAPI)
     {
       ModelLayer = modelLayerAPI == null ? ModelAbstractApi.CreateModel() : modelLayerAPI;
       Observer = ModelLayer.Subscribe<ModelIBall>(x => Balls.Add(x));
+      Balls.CollectionChanged += OnBallsCollectionChanged;
       StartCommand = new RelayCommand(
         () => Start(NumberOfBalls),
         () => !Started
@@ -48,6 +52,7 @@ namespace TP.ConcurrentProgramming.Presentation.ViewModel
     }
 
     public RelayCommand StartCommand { get; }
+
     public void Start(int numberOfBalls)
     {
       if (Disposed)
@@ -57,23 +62,19 @@ namespace TP.ConcurrentProgramming.Presentation.ViewModel
       Started = true;
       StartCommand.RaiseCanExecuteChanged();
       StopCommand.RaiseCanExecuteChanged();
+      RaisePropertyChanged(nameof(TotalEnergy));
+      RaisePropertyChanged(nameof(TotalMomentum));
     }
-    
+
     public RelayCommand StopCommand { get; }
 
-    private bool Started = false;
-    private void Stop()
-    {
-      Balls.Clear();
-      ModelLayer.Dispose();
-      ModelLayer = ModelAbstractApi.CreateModel();
-      Observer = ModelLayer.Subscribe<ModelIBall>(x => Balls.Add(x));
-      Started = false;
-      StartCommand.RaiseCanExecuteChanged();
-      StopCommand.RaiseCanExecuteChanged();
-    }
-
     public ObservableCollection<ModelIBall> Balls { get; } = new ObservableCollection<ModelIBall>();
+
+    public double TotalEnergy =>
+      Balls.Sum(b => 0.5 * (b.VelocityX * b.VelocityX + b.VelocityY * b.VelocityY));
+
+    public double TotalMomentum =>
+      Balls.Sum(b => Math.Sqrt(b.VelocityX * b.VelocityX + b.VelocityY * b.VelocityY));
 
     #endregion public API
 
@@ -85,13 +86,13 @@ namespace TP.ConcurrentProgramming.Presentation.ViewModel
       {
         if (disposing)
         {
+          Balls.CollectionChanged -= OnBallsCollectionChanged;
+          foreach (ModelIBall ball in Balls)
+            ball.PropertyChanged -= OnBallPropertyChanged;
           Balls.Clear();
           Observer.Dispose();
           ModelLayer.Dispose();
         }
-
-        // TODO: free unmanaged resources (unmanaged objects) and override finalizer
-        // TODO: set large fields to null
         Disposed = true;
       }
     }
@@ -108,9 +109,44 @@ namespace TP.ConcurrentProgramming.Presentation.ViewModel
 
     #region private
 
-    private IDisposable Observer = null;
+    private IDisposable Observer = null!;
     private ModelAbstractApi ModelLayer;
     private bool Disposed = false;
+    private bool Started = false;
+
+    private void Stop()
+    {
+      Balls.CollectionChanged -= OnBallsCollectionChanged;
+      foreach (ModelIBall ball in Balls)
+        ball.PropertyChanged -= OnBallPropertyChanged;
+      Balls.Clear();
+      ModelLayer.Dispose();
+      ModelLayer = ModelAbstractApi.CreateNewModel();
+      Observer = ModelLayer.Subscribe<ModelIBall>(x => Balls.Add(x));
+      Balls.CollectionChanged += OnBallsCollectionChanged;
+      Started = false;
+      StartCommand.RaiseCanExecuteChanged();
+      StopCommand.RaiseCanExecuteChanged();
+      RaisePropertyChanged(nameof(TotalEnergy));
+      RaisePropertyChanged(nameof(TotalMomentum));
+    }
+
+    private void OnBallsCollectionChanged(object? sender, NotifyCollectionChangedEventArgs e)
+    {
+      if (e.NewItems != null)
+        foreach (ModelIBall ball in e.NewItems)
+          ball.PropertyChanged += OnBallPropertyChanged;
+
+      if (e.OldItems != null)
+        foreach (ModelIBall ball in e.OldItems)
+          ball.PropertyChanged -= OnBallPropertyChanged;
+    }
+
+    private void OnBallPropertyChanged(object? sender, PropertyChangedEventArgs e)
+    {
+      RaisePropertyChanged(nameof(TotalEnergy));
+      RaisePropertyChanged(nameof(TotalMomentum));
+    }
 
     #endregion private
   }
